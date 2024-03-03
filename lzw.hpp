@@ -29,7 +29,7 @@ class lzw
         std::vector<int> encode(std::string contents) // encoding function
         {
             std::string found = "";
-            std::vector<int> result;
+            std::vector<int> result = {};
 
             if (!contents.empty())  // do the check on contents here
             { // encode first char here to remove duplicates
