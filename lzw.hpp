@@ -8,7 +8,7 @@ class lzw
     int dSize = 256;
     std::unordered_map<std::string, int> dict;
 
-    bool checkKey(std::unordered_map<std::string, int> m, std::string key)
+    bool checkKey(std::unordered_map<std::string, int> m, std::string key) // check if key exists in dict
     {
         if(m.find(key) == m.end()) { return false; }
         else { return true; }
@@ -16,7 +16,7 @@ class lzw
 
     public:
         
-        lzw()
+        lzw() // constructor that populates dict
         {
             for(int i=0; i<dSize; i++) {
                 char c = static_cast<char>(i);
@@ -26,13 +26,13 @@ class lzw
             }
         }
 
-        std::vector<int> encode(std::string contents)
+        std::vector<int> encode(std::string contents) // encoding function
         {
             std::string found = "";
             std::vector<int> result;
 
-            if (!contents.empty()) 
-            {
+            if (!contents.empty())  // do the check on contents here
+            { // encode first char here to remove duplicates
                 char firstChar = contents[0];
                 std::string found = std::string(1, firstChar);
                 result.push_back(dict[found]);
@@ -56,7 +56,7 @@ class lzw
                 {
                     result.push_back(dict[found]);
 
-                    dict.insert(std::make_pair(cToAdd, dSize++));
+                    dict[cToAdd] = dSize++;
 
                     found = std::string(1, c);
                 }
