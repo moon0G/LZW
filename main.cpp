@@ -1,16 +1,32 @@
 #include "lzw.hpp"
 
+
 int main()
 {
     lzw compressor;
 
-    std::vector<int> result = compressor.encode("Hello");
+    // for testing
 
+
+
+    std::vector<int> result = compressor.encode("Hello, how are you today? Hello, Good and you?");
     
-    std::cout<<result.size()<<"\n";
-
-    for(auto i: result) 
+    for(int i: result)
     {
         std::cout<<i<<"\n";
     }
+
+    /*std::string lorem = compressor.decode(result);
+    
+    std::cout<<lorem;*/
+    
+    /*
+    std::cout<<result.size()<<"\n";
+
+    compressor.compOutput(result, "o.bin");
+
+    std::vector<int> read = compressor.compInput("o.bin");
+
+    std::cout<<read.size();
+    */
 }
